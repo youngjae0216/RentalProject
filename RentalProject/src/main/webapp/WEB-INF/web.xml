@@ -12,14 +12,14 @@
   
   
   <!-- Servlet Mapping -->
-  <!-- <servlet>
+  <servlet>
   	<servlet-name>Service</servlet-name>
   	<servlet-class>member.controller.Service</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Service</servlet-name>
   	<url-pattern>/service</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping>
   
   <!-- JSP mapping -->
   <servlet>

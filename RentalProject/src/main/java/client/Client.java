@@ -12,6 +12,13 @@ public class Client {
 		this.name = name;
 		this.date = date;
 	}
+	
+	public Client(ClientRequestDto clientDto) {
+		this.clientId = clientDto.getClientId();
+		this.password = clientDto.getPassword();
+		this.name = clientDto.getName();
+		this.date = clientDto.getDate();
+	}
 
 	public String getClientId() {
 		return clientId;
