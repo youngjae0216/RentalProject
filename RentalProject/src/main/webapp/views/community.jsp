@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="header"/>
 </head>
 <body>
-	
+
 </body>
+<jsp:include page="footer"/>
 </html>
