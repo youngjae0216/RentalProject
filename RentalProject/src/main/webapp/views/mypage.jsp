@@ -11,12 +11,17 @@
 <jsp:include page="header" />
 </head>
 <%
-Client client = (Client) session.getAttribute("log");
-ArrayList<Booking> list = BookingDao.getInstance().getBookingById(client.getClientId());
+
+//Client client = (Client)request.getAttribute("log");
+
+//BookingDao bookingDao = BookingDao.getInstance();
+//ArrayList<Booking> list = bookingDao.getBookingById(client.getClientId());
+
 %>
 <body>
+<section>
 	<h2>예약 내역</h2>
-	<table>
+	<table border=1>
 		<thead>
 			<tr>
 				<th>예약번호</th>
@@ -48,6 +53,7 @@ ArrayList<Booking> list = BookingDao.getInstance().getBookingById(client.getClie
 			%>
 		</tbody>
 	</table>
+</section>
 </body>
 <jsp:include page="footer" />
 </html>

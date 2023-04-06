@@ -16,7 +16,6 @@ public class JoinAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로직
-		request.setCharacterEncoding("utf-8");
 		
 		String clientId = request.getParameter("clientId");
 		String password = request.getParameter("password");
@@ -28,7 +27,11 @@ public class JoinAction implements Action{
 		ClientDao clientDao = ClientDao.getInstance();
 		clientDao.createClient(clientDto);
 
-		response.sendRedirect("login");
+		if(clientDao.getClientById(clientId)!=null)
+			response.sendRedirect("login");
+		else
+			response.sendRedirect("join");
+			
 	}
 	
 }

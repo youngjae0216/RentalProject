@@ -10,27 +10,27 @@ import javax.servlet.http.HttpSession;
 import client.Client;
 import client.controller.ClientDao;
 
-public class LoginAction implements Action{
+public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-request.setCharacterEncoding("utf-8");
-		
+
+
 		String clientId = request.getParameter("clientId");
 		String password = request.getParameter("password");
-		
-		
+
 		ClientDao clientDao = ClientDao.getInstance();
 		Client client = clientDao.getClientById(clientId);
+
+//		if (client.getPassword().equals(password)) {
+//			response.sendRedirect("mypage");
+//		}else{
+//			response.sendRedirect("login");
 		
-		if(client.getPassword().equals(password)) {
-			response.sendRedirect("mypage");
-		}
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("log", session);
-		
+//		HttpSession session = request.getSession();
+//		session.setAttribute("log", client);
+
+
 	}
 
 }
