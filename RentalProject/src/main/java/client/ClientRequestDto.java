@@ -10,7 +10,7 @@ public class ClientRequestDto {
 		this.clientId = clientId;
 		this.password = password;
 		this.name = name;
-		this.date = new Timestamp(System.currentTimeMillis());;
+		this.date = new Timestamp(System.currentTimeMillis());
 	}
 
 	public String getClientId() {

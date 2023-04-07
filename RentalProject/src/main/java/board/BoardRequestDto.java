@@ -12,7 +12,7 @@ public class BoardRequestDto {
 		this.title = title;
 		this.content = content;
 		this.modDate = modDate;
-		this.date = date;
+		this.date = new Timestamp(System.currentTimeMillis());
 	}
 
 	public String getPostno() {

@@ -1,3 +1,4 @@
+<%@page import="board.controller.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,10 @@
 <link rel="stylesheet" href="../resources/write.css">
 </head>
 <%
-//로그
+BoardDao boardDao = BoardDao.getInstance();
+String title = request.getParameter("title");
+String content = request.getParameter("content");
+
 %>
 <body>
 	<section>
@@ -16,18 +20,20 @@
 			<form method="POST" action="../service">
 				<input type="hidden" name="command" value="write">
 				<div>
-					<textarea rows="1" cols="50" maxlength="50" placeholder="제목"
-						required></textarea>
+					<textarea name="title" id="title" rows="1" cols="50" maxlength="50" placeholder="제목" required><%=title != null ? title : ""%>
+						<%=title == null ? "autofocus" : ""%></textarea>
 				</div>
 				<div class="content">
-					<textarea rows="23" cols="130" placeholder="내용" required></textarea>
+					<textarea name="content" id="content" rows="23" cols="130" placeholder="내용" required><%=content != null ? content : ""%>
+						<%=content == null ? "autofocus" : ""%></textarea>
 				</div>
 				<div>
-					<button type="submit">작성하기</button>
+					<input type="button" value="작성하기" onclick="checkValues(form)">
 				</div>
 			</form>
 		</div>
 	</section>
+	<script type="text/javascript" src="../resources/write.js"></script>
 </body>
 <jsp:include page="footer" />
 </html>

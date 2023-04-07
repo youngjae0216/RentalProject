@@ -28,7 +28,7 @@ public class ClientDao {
 		
 		this.conn = DBManager.getConnection();
 		if (this.conn != null) {
-			String sql = "INSERT INTO client VALUES(?,?,?,?);";
+			String sql = "INSERT INTO client VALUES(?,?,?,?)";
 			
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);

@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import board.Board;
+import board.BoardRequestDto;
 import util.DBManager;
 
 
@@ -23,7 +24,34 @@ public class BoardDao {
 	}
 	
 	//C
-	
+	public void createBoard(BoardRequestDto boardDto) {
+		Board board = new Board(boardDto);
+		
+		this.conn = DBManager.getConnection();
+		if(conn != null) {
+			String sql = "INSERT INTO board VALUES(?,?,?,?,?,?)";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, board.getPostno());
+				this.pstmt.setString(2, board.getClientId());
+				this.pstmt.setString(3, board.getTitle());
+				this.pstmt.setString(4, board.getContent());
+				this.pstmt.setTimestamp(5, board.getModDate());
+				this.pstmt.setTimestamp(6, board.getDate());
+				
+				this.pstmt.execute();
+				
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+			
+			
+		}
+	}
 	
 	
 	//R
@@ -61,6 +89,40 @@ public class BoardDao {
 		}
 		return list;
 	}
+	
+	public String getPostnoMax() {
+		int postno = 1;
+
+		this.conn = DBManager.getConnection();
+		if (this.conn != null) {
+			String sql = "SELECT MAX(postno) FROM board";
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+
+				this.rs.next();
+				postno = this.rs.getInt(1);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
+		return postno+"";
+	}
+	
+	public Board getBoardByPostno() {
+		Board board = null;
+		this.conn = DBManager.getConnection();
+		if(conn != null) {
+			
+		}
+		
+		return board;
+	}
+	
+	
 	
 	
 	//U

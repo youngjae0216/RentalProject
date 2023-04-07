@@ -1,3 +1,4 @@
+<%@page import="client.Client"%>
 <%@page import="board.Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="board.controller.BoardDao"%>
@@ -13,6 +14,8 @@
 <%
 BoardDao boardDao = BoardDao.getInstance();
 ArrayList<Board> list = boardDao.getBoardAll();
+Client client = (Client)session.getAttribute("log");
+
 %>
 <section>
 <input type="hidden" name="command" value="mypage">
@@ -43,7 +46,13 @@ ArrayList<Board> list = boardDao.getBoardAll();
 		<tfoot>
 		<tr>
 			<td colspan="5">
+			<%
+			if(client == null){
+			%>
+			<p>글쓰기는 로그인 후 이용가능합니다.</p>
+			<%}else{ %>
 			<a href="write">글쓰기</a>
+			<%} %>
 			</td>
 		</tr>
 		</tfoot>
