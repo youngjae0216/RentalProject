@@ -42,8 +42,9 @@ public class VehicleDao {
 					String name = this.rs.getString(2);
 					String venueId = this.rs.getString(3);
 					Timestamp date = this.rs.getTimestamp(4);
+					int checkRev = this.rs.getInt(5);
 					
-					Vehicle vehicle = new Vehicle(vehicleId,name,venueId,date);
+					Vehicle vehicle = new Vehicle(vehicleId,name,venueId,date,checkRev);
 					list.add(vehicle);
 				}
 			} catch (SQLException e) {
@@ -61,15 +62,42 @@ public class VehicleDao {
 	
 	public ArrayList<Vehicle> getVehicleNameNoneReservation(){
 		ArrayList<Vehicle> list = new ArrayList<>();
-		
-		
-		
+		this.conn = DBManager.getConnection();
+		if(conn != null) {
+			String sql = "SELECT * FROM vehicle WHERE check_rev='0'";
+			
+			try {
+				this.pstmt = conn.prepareStatement(sql);
+				this.rs = pstmt.executeQuery();
+				
+				while(this.rs.next()) {
+					String vehicleId = this.rs.getString(1);
+					String name = this.rs.getString(2);
+					String venueId = this.rs.getString(3);
+					Timestamp date = this.rs.getTimestamp(4);
+					int checkRev = this.rs.getInt(5);
+					
+					Vehicle vehicle = new Vehicle(vehicleId,name,venueId,date,checkRev);
+					list.add(vehicle);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
 		return list;
 	}
 	
 	
 	
 	//U
+	
+	public void updateVehicleRev() {
+		
+	}
 	
 	
 	

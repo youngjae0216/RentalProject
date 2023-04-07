@@ -1,3 +1,6 @@
+<%@page import="vehicle.Vehicle"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vehicle.controller.VehicleDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,18 +10,21 @@
 <jsp:include page="header" />
 </head>
 <%
-
+VehicleDao vehicleDao = VehicleDao.getInstance();
+ArrayList<Vehicle> list = vehicleDao.getVehicleNameNoneReservation();
 %>
 <body>
 	<section>
 		<h2>렌트카 예약 서비스</h2>
 		<form method="POST" action="../service">
-		<input type="hidden" name="command" value="rental">
+			<input type="hidden" name="command" value="rental">
 			<table border=1>
 				<tr>
 					<th>차종</th>
 					<td><select id="name" name="name">
-							<option value=""></option>
+							<%for(Vehicle vehicle : list){ %>
+							<option value="<%=vehicle.getName() %>"><%=vehicle.getName() %></option>
+							<%} %>
 					</select></td>
 				</tr>
 				<tr>
@@ -31,8 +37,9 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-					<input type="button" onclick="checkValues(form)">
-					</td>
+					<input type="button" value="예약하기" 
+						onclick="checkValues(form)">
+						</td>
 				</tr>
 			</table>
 		</form>
