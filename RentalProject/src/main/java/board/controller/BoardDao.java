@@ -109,19 +109,38 @@ public class BoardDao {
 				DBManager.close(conn, pstmt, rs);
 			}
 		}
-		return postno+"";
+		return postno+1+"";
 	}
 	
-	public Board getBoardByPostno() {
+	public Board getBoardByPostno(String postno) {
 		Board board = null;
 		this.conn = DBManager.getConnection();
 		if(conn != null) {
+			String sql = "SELECT * FROM board WHERE postno=?";
 			
+			try {
+				this.pstmt = conn.prepareStatement(sql);
+				this.pstmt.setString(1, postno);
+				this.rs = pstmt.executeQuery();
+				
+				while(this.rs.next()) {
+					String clientId = this.rs.getString(2);
+					String title = this.rs.getString(3);
+					String content = this.rs.getString(4);
+					Timestamp modDate = this.rs.getTimestamp(5);
+					Timestamp date = this.rs.getTimestamp(6);
+					
+					board = new Board(postno, clientId, title, content, modDate,date);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
 		}
-		
 		return board;
 	}
-	
 	
 	
 	

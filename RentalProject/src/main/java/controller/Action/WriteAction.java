@@ -27,7 +27,7 @@ public class WriteAction implements Action {
 		BoardRequestDto boardDto = new BoardRequestDto(boardDao.getPostnoMax(), client.getClientId(), title, content, null, null);
 		boardDao.createBoard(boardDto);
 		
-		
+		response.sendRedirect("community");
 		
 	}
 

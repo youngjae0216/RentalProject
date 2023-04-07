@@ -27,7 +27,6 @@ Client client = (Client)session.getAttribute("log");
 				<th>제목</th>
 				<th>작성자</th>
 				<th>게시날짜</th>
-				<th>수정날짜</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,11 +34,10 @@ Client client = (Client)session.getAttribute("log");
 		for(Board board : list){
 		%>
 			<tr>
-				<td><%=board.getPostno() %></td>
+				<td><a href="read?postno=<%=board.getPostno() %>"><%=board.getPostno() %></a></td>
 				<td><%=board.getTitle() %></td>
 				<td><%=board.getClientId() %></td>
 				<td><%=board.getDate() %></td>
-				<td><%=board.getModDate() %></td>
 			</tr>
 			<%} %>
 		</tbody>

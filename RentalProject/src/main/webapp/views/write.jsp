@@ -20,12 +20,10 @@ String content = request.getParameter("content");
 			<form method="POST" action="../service">
 				<input type="hidden" name="command" value="write">
 				<div>
-					<textarea name="title" id="title" rows="1" cols="50" maxlength="50" placeholder="제목" required><%=title != null ? title : ""%>
-						<%=title == null ? "autofocus" : ""%></textarea>
+					<textarea name="title" id="title" rows="1" cols="40" placeholder="제목" required <%=title == null ? "autofocus" : ""%>><%=title != null ? title : ""%></textarea>
 				</div>
 				<div class="content">
-					<textarea name="content" id="content" rows="23" cols="130" placeholder="내용" required><%=content != null ? content : ""%>
-						<%=content == null ? "autofocus" : ""%></textarea>
+					<textarea name="content" id="content" rows="23" cols="130" placeholder="내용" <%=content == null ? "autofocus" : ""%> required><%=content != null ? content : ""%></textarea>
 				</div>
 				<div>
 					<input type="button" value="작성하기" onclick="checkValues(form)">
