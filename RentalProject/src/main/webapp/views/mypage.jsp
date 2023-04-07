@@ -12,10 +12,15 @@
 </head>
 <%
 
-//Client client = (Client)request.getAttribute("log");
+Client client = (Client)session.getAttribute("log");
 
-//BookingDao bookingDao = BookingDao.getInstance();
-//ArrayList<Booking> list = bookingDao.getBookingById(client.getClientId());
+if(client == null) {
+	response.sendRedirect("login");
+}
+else {
+
+BookingDao bookingDao = BookingDao.getInstance();
+ArrayList<Booking> list = bookingDao.getBookingById(client.getClientId());
 
 %>
 <body>
@@ -53,6 +58,7 @@
 			%>
 		</tbody>
 	</table>
+<%} %>
 </section>
 </body>
 <jsp:include page="footer" />

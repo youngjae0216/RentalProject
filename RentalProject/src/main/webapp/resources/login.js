@@ -1,28 +1,31 @@
-function checkValues(htmlForm){
+function checkValues(htmlForm) {
 	let url = "login?";
-	
+
 	const clientId = document.getElementById("clientId").value;
 	const password = document.getElementById("password").value;
-	
+
 	let check = true;
 
-	if(clientId !== "")
+	if (clientId !== "")
 		url += "&clientId=" + clientId;
-	if(password !== "")
+	if (password !== "")
 		url += "&password=" + password;
-	
-	if(clientId === "") {
+
+	if (clientId === "") {
 		alert('아이디가 입력되지 않았습니다.');
 		check = false;
 	}
-	else if(password === "") {
+	else if (password === "") {
 		alert('비밀번호가 입력되지 않았습니다.');
 		check = false;
 	}
-	else{
-		htmlForm.submit();	
+	
+	if (check === true) {
+		htmlForm.submit();
 	}
-	
-	
-	
+	else {
+		location.href = url;
+	}
+
+
 }

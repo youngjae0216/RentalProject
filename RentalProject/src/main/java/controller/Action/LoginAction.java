@@ -21,16 +21,15 @@ public class LoginAction implements Action {
 
 		ClientDao clientDao = ClientDao.getInstance();
 		Client client = clientDao.getClientById(clientId);
+	
+		HttpSession session = request.getSession();
+		session.setAttribute("log", client);
 
-//		if (client.getPassword().equals(password)) {
-//			response.sendRedirect("mypage");
-//		}else{
-//			response.sendRedirect("login");
-		
-//		HttpSession session = request.getSession();
-//		session.setAttribute("log", client);
-
-
+		if (client != null && client.getPassword().equals(password)) {
+			response.sendRedirect("mypage");
+		}else{
+			response.sendRedirect("login");
+		}
 	}
 
 }

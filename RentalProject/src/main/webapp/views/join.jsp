@@ -18,7 +18,7 @@
 	%>
 	<section>
 		<h2>회원가입</h2>
-		<form method="POST" action="../join">
+		<form method="POST" action="../service">
 		<input type="hidden" name="command" value="join">
 			<table border="1">
 				<tr>

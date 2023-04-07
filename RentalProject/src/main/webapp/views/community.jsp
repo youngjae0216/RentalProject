@@ -40,6 +40,13 @@ ArrayList<Board> list = boardDao.getBoardAll();
 			</tr>
 			<%} %>
 		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="5">
+			<a href="write">글쓰기</a>
+			</td>
+		</tr>
+		</tfoot>
 	</table>
 </section>
 </body>

@@ -26,8 +26,12 @@ function checkValues(htmlForm){
 		alert('이름이 입력되지 않았습니다.');
 		check = false;
 	}
+	
+	if(check === true) {
+		htmlForm.submit();			
+	}
 	else{
-		htmlForm.submit();	
+		location.href=url;
 	}
 	
 	

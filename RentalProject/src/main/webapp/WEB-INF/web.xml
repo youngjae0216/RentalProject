@@ -14,7 +14,7 @@
   <!-- Servlet Mapping -->
   <servlet>
   	<servlet-name>Service</servlet-name>
-  	<servlet-class>member.controller.Service</servlet-class>
+  	<servlet-class>controller.Service</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Service</servlet-name>
@@ -22,6 +22,17 @@
   </servlet-mapping>
   
   <!-- JSP mapping -->
+  
+  <servlet>
+  	<servlet-name>write</servlet-name>
+  	<jsp-file>/views/write.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>write</servlet-name>
+  	<url-pattern>/write</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
   	<servlet-name>community</servlet-name>
   	<jsp-file>/views/community.jsp</jsp-file>

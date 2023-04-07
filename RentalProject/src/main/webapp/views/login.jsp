@@ -15,7 +15,7 @@
 	%>
 	<section>
 		<h2>로그인</h2>
-		<form method="POST" action="../login">
+		<form method="POST" action="../service">
 		<input type="hidden" name="command" value="login">
 			<table border="1">
 				<tr>
