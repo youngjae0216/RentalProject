@@ -4,6 +4,7 @@ import controller.Action.Action;
 import controller.Action.JoinAction;
 import controller.Action.LoginAction;
 import controller.Action.LogoutAction;
+import controller.Action.RentalAction;
 import controller.Action.WriteAction;
 
 public class Actionfactory {
@@ -27,9 +28,9 @@ public class Actionfactory {
 				action = new LogoutAction();
 			else if(command.equals("write"))
 				action = new WriteAction();
-			
+			else if(command.equals("rental"))
+				action = new RentalAction();
 		}
-		
 		return action;
 	}
 }
