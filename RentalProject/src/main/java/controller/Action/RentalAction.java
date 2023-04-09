@@ -46,6 +46,8 @@ public class RentalAction implements Action {
 
 		vehicleDao.updateVehicleRev(vehicleId);
 
+		
+		
 		if (vehicleDao.getVehicleByName(name).getCheckRev() == 0) {
 			response.sendRedirect("rental");
 		} else {
