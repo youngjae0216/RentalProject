@@ -13,9 +13,6 @@
 <body>
 <%
 DBManager.getConnection();
-BookingDao b = BookingDao.getInstance();
-String n = b.getReservationNum();
-System.out.print(n);
 %>
 	<section>
 		<h2>렌트카 서비스 프로젝트</h2>

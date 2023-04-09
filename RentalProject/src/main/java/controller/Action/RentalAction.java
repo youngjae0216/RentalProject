@@ -14,23 +14,23 @@ import client.Client;
 import vehicle.Vehicle;
 import vehicle.controller.VehicleDao;
 
-public class RentalAction implements Action{
+public class RentalAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		// 이름을 파라미터로 받는 vehicle 찾는 메서드 vehicleDao에 구현
-		
+
 		VehicleDao vehicleDao = VehicleDao.getInstance();
 		BookingDao bookingDao = BookingDao.getInstance();
-		
+
 		HttpSession session = request.getSession();
 		Client client = (Client) session.getAttribute("log");
 		String name = request.getParameter("name");
-		
+
 		Vehicle vehicle = vehicleDao.getVehicleByName(name);
-		
+
 		String vehicleId = vehicle.getVehicleId();
 		String clientId = client.getClientId();
 		String venueId = vehicle.getVenueId();
@@ -39,16 +39,16 @@ public class RentalAction implements Action{
 		int pay = hour * 8000;
 		Timestamp regDate = null;
 		String revNum = bookingDao.getReservationNum();
-		
-		BookingRequestDto bookingDto = new BookingRequestDto(vehicleId,clientId,venueId,opDate,hour,pay,regDate,revNum);
+
+		BookingRequestDto bookingDto = new BookingRequestDto(vehicleId, clientId, venueId, opDate, hour, pay, regDate,
+				revNum);
 		bookingDao.createBooking(bookingDto);
-		
+
 		vehicleDao.updateVehicleRev(vehicleId);
-		
-		if(vehicleDao.getVehicleByName(name).getCheckRev() == 0) {
+
+		if (vehicleDao.getVehicleByName(name).getCheckRev() == 0) {
 			response.sendRedirect("rental");
-		}
-		else {
+		} else {
 			response.sendRedirect("mypage");
 		}
 	}
