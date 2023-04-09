@@ -11,7 +11,7 @@
 </head>
 <%
 VehicleDao vehicleDao = VehicleDao.getInstance();
-ArrayList<Vehicle> list = vehicleDao.getVehicleNameNoneReservation();
+ArrayList<Vehicle> list = vehicleDao.getVehicleNoneReservation();
 %>
 <body>
 	<section>
@@ -33,13 +33,13 @@ ArrayList<Vehicle> list = vehicleDao.getVehicleNameNoneReservation();
 				</tr>
 				<tr>
 					<th>예약날짜</th>
-					<td><input name="opDate" type="date" required></td>
+					<td><input name="opDate" type="text"
+						pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="####-##-##"
+						placeholder="날짜 입력" required></td>
 				</tr>
 				<tr>
-					<td colspan="2">
-					<input type="button" value="예약하기" 
-						onclick="checkValues(form)">
-						</td>
+					<td colspan="2"><input type="button" value="예약하기"
+						onclick="checkValues(form)"></td>
 				</tr>
 			</table>
 		</form>

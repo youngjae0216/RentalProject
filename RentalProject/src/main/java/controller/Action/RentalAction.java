@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import booking.BookingRequestDto;
 import booking.controller.BookingDao;
 import client.Client;
+import vehicle.Vehicle;
 import vehicle.controller.VehicleDao;
 
 public class RentalAction implements Action{
@@ -25,19 +27,30 @@ public class RentalAction implements Action{
 		
 		HttpSession session = request.getSession();
 		Client client = (Client) session.getAttribute("log");
+		String name = request.getParameter("name");
 		
-//		String vehicleId = 
+		Vehicle vehicle = vehicleDao.getVehicleByName(name);
+		
+		String vehicleId = vehicle.getVehicleId();
 		String clientId = client.getClientId();
-//		String venueId = 
-//		Timestamp opDate = request.getParameter("date");  가져온 값을 timestamp로 어떻게 변환??
+		String venueId = vehicle.getVenueId();
+		Timestamp opDate = Timestamp.valueOf(request.getParameter("opDate")); // 형식
 		int hour = Integer.parseInt(request.getParameter("hour"));
 		int pay = hour * 8000;
 		Timestamp regDate = null;
-//		String revNum = 	// 랜덤값 부여하는 메서드 구현 bookingDao에 구현 
+		String revNum = bookingDao.getReservationNum();
 		
-		// 나머지 구현 booking에 넣고 / vehicle check_rev 값 1로 바꾸고 (update메서드구현)
+		BookingRequestDto bookingDto = new BookingRequestDto(vehicleId,clientId,venueId,opDate,hour,pay,regDate,revNum);
+		bookingDao.createBooking(bookingDto);
 		
-		response.sendRedirect("mypage");
+		vehicleDao.updateVehicleRev(vehicleId);
+		
+		if(vehicleDao.getVehicleByName(name).getCheckRev() == 0) {
+			response.sendRedirect("rental");
+		}
+		else {
+			response.sendRedirect("mypage");
+		}
 	}
 
 }

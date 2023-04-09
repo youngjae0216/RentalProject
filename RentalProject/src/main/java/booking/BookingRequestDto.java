@@ -14,7 +14,7 @@ public class BookingRequestDto {
 			this.opDate = opDate;
 			this.hour = hour;
 			this.pay = pay;
-			this.regDate = regDate;
+			this.regDate = new Timestamp(System.currentTimeMillis());
 			this.revNum = revNum;
 		}
 
