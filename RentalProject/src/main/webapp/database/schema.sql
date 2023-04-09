@@ -19,6 +19,7 @@ vehicle_id VARCHAR(10) PRIMARY KEY NOT NULL,
 name VARCHAR(20) NOT NULL,
 venue_id VARCHAR(10) NOT NULL,
 date_time TIMESTAMP DEFAULT current_timestamp,
+check_rev INT NOT NULL,
 FOREIGN KEY(venue_id) REFERENCES venue(venue_id)
 );
 

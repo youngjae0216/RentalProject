@@ -97,6 +97,7 @@ public class VehicleDao {
 
 			try {
 				this.pstmt = conn.prepareStatement(sql);
+				this.pstmt.setString(1, name);
 				this.rs = pstmt.executeQuery();
 				while (this.rs.next()) {
 					String vehicleId = this.rs.getString(1);
@@ -123,7 +124,7 @@ public class VehicleDao {
 	public void updateVehicleRev(String vehicleId) {
 		this.conn = DBManager.getConnection();
 		if (this.conn != null) {
-			String sql = "UPDATE vehicle SET check_rev=0 WHERE vehicle_id='?'";
+			String sql = "UPDATE vehicle SET check_rev=1 WHERE vehicle_id=?";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);

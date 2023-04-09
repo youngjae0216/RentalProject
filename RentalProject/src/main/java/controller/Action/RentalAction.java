@@ -34,7 +34,7 @@ public class RentalAction implements Action {
 		String vehicleId = vehicle.getVehicleId();
 		String clientId = client.getClientId();
 		String venueId = vehicle.getVenueId();
-		Timestamp opDate = Timestamp.valueOf(request.getParameter("opDate")); // 형식
+		Timestamp opDate = Timestamp.valueOf(request.getParameter("opDate")+" 00:00:00.0");
 		int hour = Integer.parseInt(request.getParameter("hour"));
 		int pay = hour * 8000;
 		Timestamp regDate = null;
@@ -45,7 +45,6 @@ public class RentalAction implements Action {
 		bookingDao.createBooking(bookingDto);
 
 		vehicleDao.updateVehicleRev(vehicleId);
-
 		
 		
 		if (vehicleDao.getVehicleByName(name).getCheckRev() == 0) {
