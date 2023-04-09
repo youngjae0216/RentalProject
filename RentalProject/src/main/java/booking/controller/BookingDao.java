@@ -39,7 +39,7 @@ public class BookingDao {
 				result += a;
 			} else {
 				int rNum = ran.nextInt(10);
-				result += rNum+"";
+				result += rNum + "";
 			}
 			count++;
 		}
@@ -52,7 +52,7 @@ public class BookingDao {
 		this.conn = DBManager.getConnection();
 		if (this.conn != null) {
 			String sql = "INSERT INTO booking VALUES(?,?,?,?,?,?,?,?)";
-			
+
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setString(1, booking.getVehicleId());
@@ -63,21 +63,18 @@ public class BookingDao {
 				this.pstmt.setInt(6, booking.getPay());
 				this.pstmt.setTimestamp(7, booking.getRegDate());
 				this.pstmt.setString(8, booking.getRevNum());
-				
+
 				this.pstmt.execute();
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				DBManager.close(conn, pstmt);
 			}
-			
+
 		}
-		
-		
+
 	}
-	
-	
 
 	// R
 	public ArrayList<Booking> getBookingById(String clientId) {
