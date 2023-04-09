@@ -22,9 +22,13 @@ ArrayList<Vehicle> list = vehicleDao.getVehicleNoneReservation();
 				<tr>
 					<th>차종</th>
 					<td><select id="name" name="name">
-							<%for(Vehicle vehicle : list){ %>
-							<option value="<%=vehicle.getName() %>"><%=vehicle.getName() %></option>
-							<%} %>
+							<%
+							for (Vehicle vehicle : list) {
+							%>
+							<option value="<%=vehicle.getName()%>"><%=vehicle.getName()%></option>
+							<%
+							}
+							%>
 					</select></td>
 				</tr>
 				<tr>
