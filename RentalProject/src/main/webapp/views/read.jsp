@@ -1,3 +1,4 @@
+<%@page import="client.Client"%>
 <%@page import="board.Board"%>
 <%@page import="board.controller.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,9 +13,8 @@
 String postno = request.getParameter("postno");
 BoardDao boardDao = BoardDao.getInstance();
 Board board = boardDao.getBoardByPostno(postno);
-
+Client client = (Client)session.getAttribute("log");
 %>
-
 <body>
 	<section>
 	<div>
@@ -22,6 +22,11 @@ Board board = boardDao.getBoardByPostno(postno);
 	<p><%=board.getContent() %></p>
 	<p>게시일 : <%=board.getDate() %> / 수정일 : <%=board.getModDate() %></p>
 	<button onclick="location.href='community'">뒤로가기</button>
+	<%
+	if(client != null && client.getClientId().equals(board.getClientId())){
+	%>
+	<button type="submit" onclick="location.href='modify?postno=<%=postno%>'">수정하기</button>
+	<%} %>
 	</div>
 	</section>
 </body>

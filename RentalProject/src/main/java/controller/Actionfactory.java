@@ -4,6 +4,7 @@ import controller.Action.Action;
 import controller.Action.JoinAction;
 import controller.Action.LoginAction;
 import controller.Action.LogoutAction;
+import controller.Action.ModifyAction;
 import controller.Action.RentalAction;
 import controller.Action.WriteAction;
 
@@ -30,6 +31,8 @@ public class Actionfactory {
 				action = new WriteAction();
 			else if(command.equals("rental"))
 				action = new RentalAction();
+			else if(command.equals("modify"))
+				action = new ModifyAction();
 		}
 		return action;
 	}

@@ -145,7 +145,28 @@ public class BoardDao {
 	
 	
 	//U
-	
+	public void modifyBoard(BoardRequestDto boardDto) {
+		this.conn = DBManager.getConnection();
+		if (this.conn != null) {
+			String sql = "UPDATE board SET title=?, content=?, modified_date=? WHERE postno=?";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, boardDto.getTitle());
+				this.pstmt.setString(2, boardDto.getContent());
+				this.pstmt.setTimestamp(3, boardDto.getModDate());
+				this.pstmt.setString(4, boardDto.getPostno());
+
+				this.pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
+
+	}
 	
 	
 	//D

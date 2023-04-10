@@ -15,7 +15,6 @@
 BoardDao boardDao = BoardDao.getInstance();
 ArrayList<Board> list = boardDao.getBoardAll();
 Client client = (Client)session.getAttribute("log");
-
 %>
 <section>
 <input type="hidden" name="command" value="mypage">

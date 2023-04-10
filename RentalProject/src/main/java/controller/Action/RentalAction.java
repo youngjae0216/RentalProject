@@ -27,6 +27,7 @@ public class RentalAction implements Action {
 
 		HttpSession session = request.getSession();
 		Client client = (Client) session.getAttribute("log");
+		
 		String name = request.getParameter("name");
 
 		Vehicle vehicle = vehicleDao.getVehicleByName(name);

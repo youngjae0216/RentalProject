@@ -24,6 +24,16 @@
   <!-- JSP mapping -->
   
   <servlet>
+  	<servlet-name>modify</servlet-name>
+  	<jsp-file>/views/modify.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>modify</servlet-name>
+  	<url-pattern>/modify</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>read</servlet-name>
   	<jsp-file>/views/read.jsp</jsp-file>
   </servlet>
