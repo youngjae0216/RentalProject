@@ -9,26 +9,25 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class DBManager {
-	
+
 	public static Connection getConnection() {
 		Connection conn = null;
-		
+
 		try {
-			
+
 			Context init = new InitialContext();
 			DataSource source = (DataSource) init.lookup("java:comp/env/rental");
 			conn = source.getConnection();
-			
+
 			System.out.println("DB연동 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("DB연동 실패");
 		}
-		
+
 		return conn;
 	}
-	
-	
+
 	public static void close(Connection conn, PreparedStatement pstmt) {
 		try {
 			conn.close();
@@ -37,7 +36,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
 		try {
 			conn.close();

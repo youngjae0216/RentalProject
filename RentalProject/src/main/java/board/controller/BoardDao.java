@@ -76,9 +76,7 @@ public class BoardDao {
 					
 					Board board = new Board(postno,clientId,title,content,modDate,date);
 					list.add(board);
-					
 				}
-				
 				
 			} catch (SQLException e) {
 				// TODO: handle exception

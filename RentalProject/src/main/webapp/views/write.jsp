@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="header" />
+<jsp:include page="/header" />
 <link rel="stylesheet" href="../resources/write.css">
 </head>
 <%
@@ -33,5 +33,5 @@ String content = request.getParameter("content");
 	</section>
 	<script type="text/javascript" src="../resources/write.js"></script>
 </body>
-<jsp:include page="footer" />
+<jsp:include page="/footer" />
 </html>

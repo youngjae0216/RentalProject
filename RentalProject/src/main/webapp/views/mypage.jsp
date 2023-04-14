@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="header" />
+<jsp:include page="/header" />
 </head>
 <%
 
@@ -61,5 +61,5 @@ ArrayList<Booking> list = bookingDao.getBookingById(client.getClientId());
 <%} %>
 </section>
 </body>
-<jsp:include page="footer" />
+<jsp:include page="/footer" />
 </html>

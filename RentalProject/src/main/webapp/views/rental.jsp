@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="header" />
+<jsp:include page="/header" />
 </head>
 <%
 VehicleDao vehicleDao = VehicleDao.getInstance();
@@ -52,5 +52,5 @@ ArrayList<Vehicle> list = vehicleDao.getVehicleNoneReservation();
 	</section>
 	<script type="text/javascript" src="../resources/rental.js"></script>
 </body>
-<jsp:include page="footer" />
+<jsp:include page="/footer" />
 </html>

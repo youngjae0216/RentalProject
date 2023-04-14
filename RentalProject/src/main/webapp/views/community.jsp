@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="header" />
+<jsp:include page="/header" />
 </head>
 <body>
 <%
@@ -56,5 +56,5 @@ Client client = (Client)session.getAttribute("log");
 	</table>
 </section>
 </body>
-<jsp:include page="footer" />
+<jsp:include page="/footer" />
 </html>

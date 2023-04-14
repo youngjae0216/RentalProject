@@ -6,6 +6,11 @@ public class ClientRequestDto {
 	private String clientId, password, name;
 	private Timestamp date;
 
+	public ClientRequestDto() {}
+	public ClientRequestDto(String name) {
+		this.name = name;
+	}
+	
 	public ClientRequestDto(String clientId, String password, String name, Timestamp date) {
 		this.clientId = clientId;
 		this.password = password;

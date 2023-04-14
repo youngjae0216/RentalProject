@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="header" />
+<jsp:include page="/header" />
 </head>
 <%
 String postno = request.getParameter("postno");
@@ -30,5 +30,5 @@ Client client = (Client)session.getAttribute("log");
 	</div>
 	</section>
 </body>
-<jsp:include page="footer" />
+<jsp:include page="/footer" />
 </html>
