@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<th>가입날짜</th>
-					<td><input type="text" value="<%=date %>" readonly></td>
+					<td><input type="text" value="<%=date.toString().split(" ")[0] %>" readonly></td>
 				</tr>
 				<tr>
 					<td colspan="2">

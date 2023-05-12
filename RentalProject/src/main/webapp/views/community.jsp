@@ -36,7 +36,7 @@ Client client = (Client)session.getAttribute("log");
 				<td><a href="read?postno=<%=board.getPostno() %>"><%=board.getPostno() %></a></td>
 				<td><%=board.getTitle() %></td>
 				<td><%=board.getClientId() %></td>
-				<td><%=board.getDate() %></td>
+				<td><%=board.getDate().toString().split(" ")[0] %></td>
 			</tr>
 			<%} %>
 		</tbody>
